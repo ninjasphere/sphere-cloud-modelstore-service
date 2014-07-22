@@ -4,7 +4,7 @@
   },
   "rpcService": {
     "host": "127.0.0.1",
-    "port": 5500,
+    "port": 5600,
     "signing": {
       "sign": true,
       "secret": "secret123"

@@ -5,7 +5,7 @@
     "joi": "^4.6.1",
     "lodash-node": "^2.4.1",
     "then-couchdb": "^0.4.4",
-    "usvc": "git+ssh://git@github.com:ninjablocks/usvc.git",
+    "usvc": "ninjablocks/usvc",
     "when": "~3.1.0"
   },
   "devDependencies": {}

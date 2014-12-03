@@ -2,7 +2,7 @@ PROJECT ?= sphere-modelstore-service
 EB_BUCKET ?= ninjablocks-sphere-docker
 
 APP_NAME ?= sphere-modelstore-service
-APP_ENV ?= sphere-modelstore-service-prod
+APP_ENV ?= sphere-modelstore-prod
 
 DOCKER_ARGS ?= -H dockerhost:5555
 SHA1 := $(shell git rev-parse --short HEAD | tr -d "\n")

@@ -4,7 +4,7 @@ ADD . /app
 WORKDIR /app
 
 # install your application's dependencies
-RUN apt-get install -yy git
+RUN apt-get install -yy --no-install-recommends git
 RUN npm install --production
 RUN npm rebuild
 

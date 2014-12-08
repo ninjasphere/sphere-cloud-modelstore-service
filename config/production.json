@@ -1,6 +1,6 @@
 {
   "couchdb": {
-    "url": "http://localhost:5984/sphere_modelstore"
+    "url": "http://couch.sphere.ninja/sphere_modelstore"
   },
   "rpcService": {
     "host": "127.0.0.1",

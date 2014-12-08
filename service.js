@@ -13,5 +13,5 @@ var service = usvc.microService({
 
   // rpc interface
   rpcService: usvc.facets.rpc.jsonServer(['modelStoreService']),
-  modelStoreService: require('./lib/rpc'),
+  modelStoreService: require('./lib/rpc')
 }).run();

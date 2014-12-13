@@ -8,6 +8,9 @@ Syncing:
 Access:
  * ```modelstore.listItems(user, modelName)```
  * ```modelstore.getItem(user, modelName, objectId)```
+ * ```modelstore.updateItem(user, modelName, objectId, data)```
+ * ```modelstore.createItem(user, modelName, data)```
+ * ```modelstore.deleteItem(user, modelName, objectId)```
 
 # docker
 

@@ -56,14 +56,13 @@ describe('cloud modelstore', function () {
     })
   });
 
-  it('should get a room', function (done) {
+  it('should get a room', function () {
 
-    service.facet('rpcService').then(function (facet) {
+    return service.facet('rpcService').then(function (facet) {
 
       function getRoom(result) {
         debug('getRoom', 'result', result);
         expect(result.name).to.equal('food');
-        done();
       }
 
       facet.methods['modelStoreService.modelstore.getItem']({id: '343f84cb-c137-4db1-aeab-8a985e9f7414'}, 'room', '2d3fea7f-485d-4a51-b045-b86602a0fc7f').then(getRoom);
@@ -71,14 +70,13 @@ describe('cloud modelstore', function () {
 
   });
 
-  it('should list rooms', function (done) {
+  it('should list rooms', function () {
 
-    service.facet('rpcService').then(function (facet) {
+    return service.facet('rpcService').then(function (facet) {
 
       function listRooms(results) {
         debug('results', results);
         expect(results.length).to.equal(1);
-        done();
       }
 
       facet.methods['modelStoreService.modelstore.listItems'](
@@ -89,14 +87,13 @@ describe('cloud modelstore', function () {
 
   });
 
-  it('should update a room', function (done) {
+  it('should update a room', function () {
 
-    service.facet('rpcService').then(function (facet) {
+    return service.facet('rpcService').then(function (facet) {
 
       function updatedRoom(result) {
         debug('updatedRoom', 'result', result);
         expect(result.name).to.equal('food NEW NAME');
-        done();
       }
 
       facet.methods['modelStoreService.modelstore.updateItem']({id: '343f84cb-c137-4db1-aeab-8a985e9f7414'}, 'room', '2d3fea7f-485d-4a51-b045-b86602a0fc7f',
@@ -111,9 +108,9 @@ describe('cloud modelstore', function () {
 
   });
 
-  it('should delete a room', function (done) {
+  it('should delete a room', function () {
 
-    service.facet('rpcService').then(function (facet) {
+    return service.facet('rpcService').then(function (facet) {
 
       function deleteRoom(result) {
         debug('deleteRoom', 'result', result);
@@ -123,7 +120,6 @@ describe('cloud modelstore', function () {
       function checkDeleteRoom(result) {
         debug('deleteRoom', 'result', result);
         expect(result).to.be.null;
-        done();
       }
 
       facet.methods['modelStoreService.modelstore.deleteItem'](
@@ -142,14 +138,13 @@ describe('cloud modelstore', function () {
 
   });
 
-  it('should create a room', function (done) {
+  it('should create a room', function () {
 
-    service.facet('rpcService').then(function (facet) {
+    return service.facet('rpcService').then(function (facet) {
 
       function createdRoom(result) {
         debug('createdRoom', 'result', result);
         expect(result.name).to.equal('beer');
-        done();
       }
 
       facet.methods['modelStoreService.modelstore.createItem']({id: '343f84cb-c137-4db1-aeab-8a985e9f7414'}, 'room',

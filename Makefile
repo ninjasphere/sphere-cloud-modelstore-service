@@ -4,7 +4,6 @@ EB_BUCKET ?= ninjablocks-sphere-docker
 APP_NAME ?= sphere-modelstore-service
 APP_ENV ?= sphere-modelstore-prod
 
-DOCKER_ARGS ?= -H dockerhost:5555
 SHA1 := $(shell git rev-parse --short HEAD | tr -d "\n")
 
 DOCKERRUN_FILE := Dockerrun.aws.json
@@ -16,7 +15,7 @@ build:
 	docker ${DOCKER_ARGS} build -t "docker-registry.sphere.ninja/ninjablocks/${PROJECT}:${SHA1}" .
 
 local:
-	docker ${DOCKER_ARGS} run -p 3333:3333 -t "docker-registry.sphere.ninja/ninjablocks/${PROJECT}:${SHA1}"
+	docker ${DOCKER_ARGS} run --rm --name ninja-modelstore -p 5600:5600 --link ninja-couchdb:couchdb -e "DEBUG=*" -e "USVC_CONFIG_ENV=docker" -e "NODE_ENV=development" -t "docker-registry.sphere.ninja/ninjablocks/${PROJECT}:${SHA1}"
 
 deploy:
 	docker ${DOCKER_ARGS} push "docker-registry.sphere.ninja/ninjablocks/${PROJECT}:${SHA1}"

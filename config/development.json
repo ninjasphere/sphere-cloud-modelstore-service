@@ -9,5 +9,15 @@
       "sign": true,
       "secret": "secret123"
     }
+  },
+  "modelStoreClient": {
+    "server": {
+      "hostname": "localhost",
+      "port": 5600
+    },
+    "signing": {
+      "sign": true,
+      "secret": "secret123"
+    }
   }
 }

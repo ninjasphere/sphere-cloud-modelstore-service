@@ -16,7 +16,9 @@ describe('cloud modelstore', function () {
 
     // rpc interface
     rpcService: usvc.facets.rpc.jsonServer(['modelStoreService']),
-    modelStoreService: require('../lib/rpc')
+    modelStoreService: require('../lib/rpc'),
+
+    modelStoreClient: usvc.facets.rpc.jsonClient()
   });
 
   before(function (done) {
@@ -157,5 +159,22 @@ describe('cloud modelstore', function () {
     });
 
   });
+
+  it('should list rooms', function () {
+
+    return service.facet('modelStoreClient').then(function (facet) {
+
+      function listRooms(results) {
+        debug('results', results);
+        expect(results.length).to.equal(1);
+      }
+
+      facet.call(
+        'modelstore.listItems', '343f84cb-c137-4db1-aeab-8a985e9f7414', 'room'
+      ).then(listRooms);
+    });
+
+  });
+
 
 });

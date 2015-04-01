@@ -13,7 +13,7 @@
     "lodash-node": "^2.4.1",
     "node-uuid": "^1.4.2",
     "then-couchdb": "^0.4.4",
-    "usvc": "ninjablocks/usvc",
+    "usvc": "^1.0.0",
     "when": "~3.1.0"
   },
   "devDependencies": {

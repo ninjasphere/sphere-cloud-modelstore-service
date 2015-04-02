@@ -162,7 +162,7 @@ describe('cloud modelstore', function () {
 
   it('should list rooms', function () {
 
-    return service.facet('modelStoreClient').then(function (facet) {
+    return service.facet('modelStoreClient').delay(10).then(function (facet) {
 
       function listRooms(results) {
         debug('results', results);

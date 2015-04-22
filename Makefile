@@ -9,16 +9,18 @@ SHA1 := $(shell git rev-parse --short HEAD | tr -d "\n")
 DOCKERRUN_FILE := Dockerrun.aws.json
 APP_FILE := ${SHA1}.zip
 
-all: build deploy
+all: build pull deploy
 
 build:
-	docker ${DOCKER_ARGS} build -t "docker-registry.sphere.ninja/ninjablocks/${PROJECT}:${SHA1}" .
+	docker build -t "ninjasphere/${PROJECT}:${SHA1}" .
+
+pull:
+	docker push "ninjasphere/${PROJECT}:${SHA1}"
 
 local:
-	docker ${DOCKER_ARGS} run --rm --name ninja-modelstore -p 5600:5600 --link ninja-couchdb:couchdb -e "DEBUG=*" -e "USVC_CONFIG_ENV=docker" -e "NODE_ENV=development" -t "docker-registry.sphere.ninja/ninjablocks/${PROJECT}:${SHA1}"
+	docker run --rm --name ninja-modelstore -p 5600:5600 --link ninja-couchdb:couchdb -e "DEBUG=*" -e "USVC_CONFIG_ENV=docker" -e "NODE_ENV=development" -t "ninjasphere/${PROJECT}:${SHA1}"
 
 deploy:
-	docker ${DOCKER_ARGS} push "docker-registry.sphere.ninja/ninjablocks/${PROJECT}:${SHA1}"
 	sed "s/<TAG>/${SHA1}/" < Dockerrun.aws.json.template > ${DOCKERRUN_FILE}
 	zip -r ${APP_FILE} ${DOCKERRUN_FILE} .ebextensions
 
@@ -35,4 +37,4 @@ clean:
 	rm *.zip || true
 	rm ${DOCKERRUN_FILE} || true
 
-.PHONY: all build local deploy clean
+.PHONY: all build pull local deploy clean

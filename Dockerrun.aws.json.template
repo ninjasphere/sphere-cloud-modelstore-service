@@ -5,7 +5,7 @@
     "Key": "dockercfg"
   },
   "Image": {
-    "Name": "docker-registry.sphere.ninja/ninjablocks/sphere-modelstore-service:<TAG>",
+    "Name": "ninjasphere/sphere-modelstore-service:<TAG>",
     "Update": "true"
   },
   "Ports": [

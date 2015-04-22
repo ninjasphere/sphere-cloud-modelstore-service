@@ -9,12 +9,12 @@ SHA1 := $(shell git rev-parse --short HEAD | tr -d "\n")
 DOCKERRUN_FILE := Dockerrun.aws.json
 APP_FILE := ${SHA1}.zip
 
-all: build pull deploy
+all: build push deploy
 
 build:
 	docker build -t "ninjasphere/${PROJECT}:${SHA1}" .
 
-pull:
+push:
 	docker push "ninjasphere/${PROJECT}:${SHA1}"
 
 local:
@@ -37,4 +37,4 @@ clean:
 	rm *.zip || true
 	rm ${DOCKERRUN_FILE} || true
 
-.PHONY: all build pull local deploy clean
+.PHONY: all build push local deploy clean

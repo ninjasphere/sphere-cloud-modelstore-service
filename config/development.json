@@ -2,6 +2,9 @@
   "couchdb": {
     "url": "http://localhost:5984/sphere_modelstore"
   },
+  "mysql": {
+    "url": "mysql://ninja:ninja@localhost:3306/ninja"
+  },
   "rpcService": {
     "host": "127.0.0.1",
     "port": 5600,

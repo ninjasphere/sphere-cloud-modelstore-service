@@ -10,6 +10,7 @@ var usvc = require('usvc');
 var service = usvc.microService({
   // backing stores
   couchdb: usvc.facets.db.couchdb(),
+  mysql: usvc.facets.db.mysqlPool(),
 
   // rpc interface
   rpcService: usvc.facets.rpc.jsonServer(['modelStoreService']),

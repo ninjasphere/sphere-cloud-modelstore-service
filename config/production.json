@@ -2,6 +2,7 @@
   "couchdb": {
     "url": "http://couch.sphere.ninja/sphere_modelstore"
   },
+  "mysql": {},
   "rpcService": {
     "host": "127.0.0.1",
     "port": 5600,

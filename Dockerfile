@@ -1,4 +1,4 @@
-FROM nodesource/node:trusty
+FROM nodesource/trusty
 
 ADD . /app
 WORKDIR /app
